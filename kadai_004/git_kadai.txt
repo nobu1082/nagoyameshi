@@ -1,0 +1,25 @@
+(base) kusaba@kusabaosamushuunoMacBook-Air ~ % mkdir git_challnge
+(base) kusaba@kusabaosamushuunoMacBook-Air ~ % cd git_challenge
+cd: no such file or directory: git_challenge
+(base) kusaba@kusabaosamushuunoMacBook-Air ~ % madir git_challenge
+zsh: command not found: madir
+(base) kusaba@kusabaosamushuunoMacBook-Air ~ % mkdir git_challenge
+(base) kusaba@kusabaosamushuunoMacBook-Air ~ % cd git_challenge
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git init
+Initialized empty Git repository in /Users/kusaba/git_challenge/.git/
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git add hello_world.txt
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git commit -m "hello_worldを追加"
+[main (root-commit) 5c3f4e2] hello_worldを追加
+ 1 file changed, 1 insertion(+)
+ create mode 100644 hello_world.txt
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git add hello_world.txt
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git commit -m "日本語訳を追加"
+[main d80dcd7] 日本語訳を追加
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git status
+On branch main
+nothing to commit, working tree clean
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % git log --oneline
+d80dcd7 (HEAD -> main) 日本語訳を追加
+5c3f4e2 hello_worldを追加
+(base) kusaba@kusabaosamushuunoMacBook-Air git_challenge % 
