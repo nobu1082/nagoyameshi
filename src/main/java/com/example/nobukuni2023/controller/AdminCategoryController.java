@@ -1,6 +1,5 @@
 package com.example.nobukuni2023.controller;
 
-import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.example.nobukuni2023.entity.Category;
 import com.example.nobukuni2023.form.CategoryRegisterForm;
 import com.example.nobukuni2023.repository.CategoryRepository;
 import com.example.nobukuni2023.service.CategoryService;
@@ -32,9 +30,9 @@ public class AdminCategoryController {
 	@GetMapping
 	public String index(Model model) {
 
-		List<Category> category = categoryRepository.findAll();
+	
 
-		model.addAttribute("category", category);
+	//	model.addAttribute("category", category);
 
 		return "admin/category/index";
 	}
@@ -54,7 +52,7 @@ public class AdminCategoryController {
 		}
 	@PostMapping("/{id}/delete")
 	public String delete(@PathVariable(name ="id")Integer id,RedirectAttributes redirectAttributes) { 
-		categoryRepository.deleteById(id);
+		//categoryRepository.deleteById(id);
 		redirectAttributes.addFlashAttribute("successMessage" , "カテゴリを削除しました。");
 		
 		return "redirect:/admin/category";

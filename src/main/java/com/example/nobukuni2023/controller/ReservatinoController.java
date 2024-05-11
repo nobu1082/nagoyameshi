@@ -20,9 +20,9 @@ import com.example.nobukuni2023.entity.Store;
 import com.example.nobukuni2023.entity.User;
 import com.example.nobukuni2023.form.ReservationInputForm;
 import com.example.nobukuni2023.form.ReservationRegisterForm;
-import com.example.nobukuni2023.repository.CategoryRepository;
 import com.example.nobukuni2023.repository.ReservationRepository;
 import com.example.nobukuni2023.repository.StoreRepository;
+import com.example.nobukuni2023.repository._CategoryRepository;
 import com.example.nobukuni2023.security.UserDetailsImpl;
 import com.example.nobukuni2023.service.ReservationService;
 
@@ -31,11 +31,11 @@ import com.example.nobukuni2023.service.ReservationService;
 @Controller
 public class ReservatinoController {
 	private final ReservationRepository reservationRepository ;
-	private final CategoryRepository categoryRepository;
+	private final _CategoryRepository categoryRepository;
 	private final StoreRepository storeRepository;
 	private final ReservationService reservationService;
 	
-	public ReservatinoController(ReservationRepository reservationRepository,CategoryRepository categoryRepository ,StoreRepository storeRepository , ReservationService reservationService) {
+	public ReservatinoController(ReservationRepository reservationRepository,_CategoryRepository categoryRepository ,StoreRepository storeRepository , ReservationService reservationService) {
 		this.reservationRepository = reservationRepository;
 		this.categoryRepository = categoryRepository;
 		this.storeRepository = storeRepository;
@@ -94,6 +94,11 @@ public class ReservatinoController {
 		return "redirect:/reservations?reserved";
 	}
 	
-	
-	
+	@PostMapping("/reservations/delete")
+	 public String delete(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes) {        
+        reservationRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("successMessage", "予約を削除しました。");
+        
+        return "redirect:/";
+    }    
 }

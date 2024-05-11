@@ -21,26 +21,27 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.nobukuni2023.entity.Category;
 import com.example.nobukuni2023.entity.Review;
+import com.example.nobukuni2023.entity.Role;
 import com.example.nobukuni2023.entity.Store;
 import com.example.nobukuni2023.entity.User;
 import com.example.nobukuni2023.form.ReservationInputForm;
 import com.example.nobukuni2023.form.ReviewRegisterForm;
-import com.example.nobukuni2023.repository.CategoryRepository;
 import com.example.nobukuni2023.repository.ReviewRepository;
 import com.example.nobukuni2023.repository.StoreRepository;
 import com.example.nobukuni2023.repository.UserRepository;
+import com.example.nobukuni2023.repository._CategoryRepository;
 import com.example.nobukuni2023.security.UserDetailsImpl;
 import com.example.nobukuni2023.service.ReviewService;
 @Controller
 @RequestMapping("/stores")
 public class StoreController {
 	private final StoreRepository storeRepository;
-	private final CategoryRepository categoryRepository;
+	private final _CategoryRepository categoryRepository;
 	private final ReviewRepository reviewRepository;
 	private final ReviewService reviewService;
 	private final UserRepository userRepository;
     
-    public StoreController(StoreRepository storeRepository ,CategoryRepository categoryRepository ,
+    public StoreController(StoreRepository storeRepository ,_CategoryRepository categoryRepository ,
     		ReviewRepository reviewRepository,ReviewService reviewService,UserRepository userRepository) {
         this.storeRepository = storeRepository;
         this.categoryRepository = categoryRepository;
@@ -73,10 +74,11 @@ public class StoreController {
     }
     
     @GetMapping("/{id}")
-    public String show(@PathVariable(name = "id") Integer id ,Model model) {
+    public String show(@PathVariable(name = "id") Integer id ,@AuthenticationPrincipal UserDetailsImpl userDetailsImpl,Model model) {
     	Store store = storeRepository.getReferenceById(id);
     	Category category = categoryRepository.getReferenceById(id);
     	User  user = userRepository.getReferenceById(id);
+    	Role user2 = userDetailsImpl.getUser().getRole();
     	
     	List<Review> review = reviewRepository.getReferenceByStoreid(store);
     	
@@ -85,6 +87,7 @@ public class StoreController {
     	model.addAttribute("category",category);
     	model.addAttribute("reservationInputForm", new ReservationInputForm());
     	model.addAttribute("review",review);
+    	model.addAttribute("user2" , user2);
     	
     	return "stores/show";
     }  
@@ -100,19 +103,7 @@ public class StoreController {
         return "stores/reviews/show";
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+   
     @GetMapping("/stores/{id}/reviews/register")
  	public String register(@PathVariable(name = "id") Integer id, @AuthenticationPrincipal UserDetailsImpl userDetailsImpl,Model model) {
  		model.addAttribute("reviewRegisterForm",new ReviewRegisterForm());

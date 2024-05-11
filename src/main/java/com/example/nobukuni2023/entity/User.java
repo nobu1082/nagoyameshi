@@ -37,6 +37,9 @@ public class User {
 	@Column(name = "enabled")
 	private Boolean enabled;
 	
+	@Column(name = "subscid")
+	private String subseid;
+	
 	@Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;
     

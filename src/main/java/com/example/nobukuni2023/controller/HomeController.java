@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.nobukuni2023.entity.Store;
-import com.example.nobukuni2023.repository.CategoryRepository;
+import com.example.nobukuni2023.repository._CategoryRepository;
 import com.example.nobukuni2023.repository.StoreRepository;
 
 @Controller
 public class HomeController {
 	private final StoreRepository storeRepository;
-	private final CategoryRepository categoryRepository;
+	private final _CategoryRepository categoryRepository;
 
-	public HomeController(StoreRepository storeRepository, CategoryRepository categoryRepository) {
+	public HomeController(StoreRepository storeRepository, _CategoryRepository categoryRepository) {
 		this.storeRepository = storeRepository;
 		this.categoryRepository = categoryRepository;
 	}

@@ -1,5 +1,5 @@
-package com.example.nobukuni2023.controller;
 
+package com.example.nobukuni2023.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,9 +80,6 @@ public class ReviewController {
 	  		 
 	  		return "/stores/reviews/show";
 	  	} 
-	 
-	 
-	 
 }
 
 

@@ -39,16 +39,23 @@
 									<th scope="col">予約人数</th>
 								</tr>
 							</thead>
-							<tbody>
+							<form>
 								<tr th:each="reservation : ${reservationPage}">
 									<td>
 										<a th:href="@{/stores/__${reservation.getStore().getId()}__}"
 											th:text="${reservation.getStore().getName()}"></a>
 									</td>
-									
+
 									<td th:text="${reservation.getReservationDate()}"></td>
 									<td th:text="${reservation.getNumberOfPeople + '名'}"></td>
-									</td>
+
+
+
+									<div class="modal-footer">
+										<form method="post" th:action="@{/reservaitons/delete}">
+
+											<td button type="submit" class="btn btn-danger">予約から削除</button> </td> </div></tr>
+											</td></form>
 								</tr>
 							</tbody>
 						</table>

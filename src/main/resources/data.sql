@@ -16,11 +16,12 @@ VALUES(7,4,'SAMURAI','store07.jpg','最寄り駅からバスで20分。','18時0
 INSERT IGNORE INTO stores(id,category_id,name,image_name,description,open_time,close_time,amount,postal_code,address,phone_number,closed_days,created_at,updated_at)
 VALUES(8,5,'SAMURAI屋２','store08.jpg','最寄り駅からバスで30分。','18時00分','21時00分',6000,'073-0199','愛知県名古屋市東町X-XX-XX','012-345-678','日曜日','2023-04-02','2023-04-03');
 --roleテーブル
-INSERT IGNORE INTO roles(id,name)
-VALUES(1,'ROLE_GENERAL');
-INSERT IGNORE INTO roles(id,name)
-VALUES(2,'ROLE_ADMIN');
-
+INSERT IGNORE INTO roles(id,name,namae)
+VALUES(1,'ROLE_GENERAL','無料会員');
+INSERT IGNORE INTO roles(id,name,namae)
+VALUES(2,'ROLE_ADMIN','管理者');
+INSERT IGNORE INTO roles(id,name,namae)
+VALUES(3,'Role_subsc','有料会員');
 
 --categoryテーブル
 INSERT IGNORE INTO category(id,name)
@@ -34,35 +35,14 @@ Values(4,'ホルモン');
 INSERT IGNORE INTO category(id,name)
 Values(5,'個室あり');
 
---catetory_store--
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(1,1,1);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(2,10,3);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(3,9,4);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(4,8,5);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(5,7,2);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(6,6,3);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(7,5,4);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(8,4,5);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(9,3,1);
-INSERT IGNORE INTO category_store(id,store_id,category_id)
-Values(10,2,2);
-
 --usersテーブル
-INSERT IGNORE INTO users(id,name,email,password,role_id,subsc_id,enabled,created_at,updated_at)
-VALUES(1,'侍太郎','taro.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',1,1, true,'2023-04-02','2023-04-03');
-INSERT IGNORE INTO users(id,name,email,password,role_id,subsc_id,enabled,created_at,updated_at)
-VALUES(2,'侍花子','hanako.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',2,1, true,'2023-04-02','2023-04-03');
-INSERT IGNORE INTO users(id,name,email,password,role_id,subsc_id,enabled,created_at,updated_at)
-VALUES(3,'侍次郎','jiro.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',1,1, true,'2023-04-02','2023-04-03');
+INSERT IGNORE INTO users(id,name,email,password,role_id,enabled,subscid,created_at,updated_at)
+VALUES(1,'侍太郎','taro.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',1, true, null,'2023-04-02','2023-04-03');
+INSERT IGNORE INTO users(id,name,email,password,role_id,enabled,subscid,created_at,updated_at)
+VALUES(2,'侍花子','hanako.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',2, true, null,'2023-04-02','2023-04-03');
+INSERT IGNORE INTO users(id,name,email,password,role_id,enabled,subscid,created_at,updated_at)
+VALUES(3,'侍次郎','jiro.samurai@example.com','$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO',1, true, null,'2023-04-02','2023-04-03');
+
 
 --reservationテーブル
 INSERT IGNORE INTO reservations(id,store_id,user_id,reservation_date,number_of_people,created_at,updated_at)

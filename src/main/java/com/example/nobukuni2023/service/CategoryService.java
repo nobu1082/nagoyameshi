@@ -5,12 +5,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.example.nobukuni2023.entity.Category;
 import com.example.nobukuni2023.form.CategoryRegisterForm;
-import com.example.nobukuni2023.repository.CategoryRepository;
+import com.example.nobukuni2023.repository._CategoryRepository;
 @Service
 public class CategoryService {
-	private final CategoryRepository categoryRepository;
+	private final _CategoryRepository categoryRepository;
 	
-	public CategoryService(CategoryRepository categoryRepository) {
+	public CategoryService(_CategoryRepository categoryRepository) {
 		this.categoryRepository = categoryRepository;
 	}
 	@Transactional
